@@ -1,0 +1,42 @@
+﻿{
+  "manifest_version": 2,
+
+  "name": "AMS360 forum Populate",
+  "description": "This extension will populate ams360 forum",
+  "version": "1.0",
+  "background": {
+    "scripts": [ "background.js" ]
+  },
+  "externally_connectable": {
+    "matches": [ "http://localhost:3000/*" ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://ams360n.leavitt.com/*",
+        "http://localhost:3000/*"
+      ],
+      "js": [
+        "contentScript.js"
+      ],
+      "run_at":  "document_end",
+      "all_frames": true,
+      "match_about_blank":  true
+    }
+  ],
+
+  "browser_action": {
+    "default_icon": "vertafore.png",
+    "default_popup": "iframePopulate.html"
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "https://ams360n.leavitt.com/*",
+    "http://localhost:3000/*"
+  ],
+  "web_accessible_resources": [
+    "images/image1.png"
+  ]
+
+}
